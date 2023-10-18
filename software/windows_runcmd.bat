@@ -6,10 +6,18 @@ if %ERRORLEVEL% neq 0 (
     exit /b %ERRORLEVEL%
 )
 
+
 REM Build and upload using PlatformIO
 C:\Users\ankua\.platformio\penv\Scripts\pio.exe run -t upload
 if %ERRORLEVEL% neq 0 (
     echo Error occurred during PlatformIO upload.
+    exit /b %ERRORLEVEL%
+)
+
+REM Show git diff
+git diff
+if %ERRORLEVEL% neq 0 (
+    echo Error occurred during git diff.
     exit /b %ERRORLEVEL%
 )
 
