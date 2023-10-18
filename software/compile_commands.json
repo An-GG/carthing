@@ -150,7 +150,25 @@
         "output": ".pio/build/megaatmega2560/FrameworkArduino/wiring_shift.c.o"
     },
     {
-        "command": "/Users/an/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/megaatmega2560/src/main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -mmcu=atmega2560 -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60111 -DARDUINO_AVR_MEGA2560 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -I/Users/an/.platformio/packages/framework-arduino-avr/cores/arduino -I/Users/an/.platformio/packages/framework-arduino-avr/variants/mega src/main.cpp",
+        "command": "/Users/an/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/megaatmega2560/libebd/SPI/SPI.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -mmcu=atmega2560 -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60111 -DARDUINO_AVR_MEGA2560 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/Users/an/.platformio/packages/framework-arduino-avr/libraries/SPI/src -I/Users/an/.platformio/packages/framework-arduino-avr/cores/arduino -I/Users/an/.platformio/packages/framework-arduino-avr/variants/mega /Users/an/.platformio/packages/framework-arduino-avr/libraries/SPI/src/SPI.cpp",
+        "directory": "/Users/an/Documents/Projects/carthing/software",
+        "file": "/Users/an/.platformio/packages/framework-arduino-avr/libraries/SPI/src/SPI.cpp",
+        "output": ".pio/build/megaatmega2560/libebd/SPI/SPI.cpp.o"
+    },
+    {
+        "command": "/Users/an/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/megaatmega2560/libc3c/MFRC522/MFRC522.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -mmcu=atmega2560 -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60111 -DARDUINO_AVR_MEGA2560 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I.pio/libdeps/megaatmega2560/MFRC522/src -I/Users/an/.platformio/packages/framework-arduino-avr/libraries/SPI/src -I/Users/an/.platformio/packages/framework-arduino-avr/cores/arduino -I/Users/an/.platformio/packages/framework-arduino-avr/variants/mega .pio/libdeps/megaatmega2560/MFRC522/src/MFRC522.cpp",
+        "directory": "/Users/an/Documents/Projects/carthing/software",
+        "file": ".pio/libdeps/megaatmega2560/MFRC522/src/MFRC522.cpp",
+        "output": ".pio/build/megaatmega2560/libc3c/MFRC522/MFRC522.cpp.o"
+    },
+    {
+        "command": "/Users/an/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/megaatmega2560/libc3c/MFRC522/MFRC522Extended.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -mmcu=atmega2560 -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60111 -DARDUINO_AVR_MEGA2560 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I.pio/libdeps/megaatmega2560/MFRC522/src -I/Users/an/.platformio/packages/framework-arduino-avr/libraries/SPI/src -I/Users/an/.platformio/packages/framework-arduino-avr/cores/arduino -I/Users/an/.platformio/packages/framework-arduino-avr/variants/mega .pio/libdeps/megaatmega2560/MFRC522/src/MFRC522Extended.cpp",
+        "directory": "/Users/an/Documents/Projects/carthing/software",
+        "file": ".pio/libdeps/megaatmega2560/MFRC522/src/MFRC522Extended.cpp",
+        "output": ".pio/build/megaatmega2560/libc3c/MFRC522/MFRC522Extended.cpp.o"
+    },
+    {
+        "command": "/Users/an/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/megaatmega2560/src/main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -mmcu=atmega2560 -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60111 -DARDUINO_AVR_MEGA2560 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -I.pio/libdeps/megaatmega2560/MFRC522/src -I/Users/an/.platformio/packages/framework-arduino-avr/libraries/SPI/src -I/Users/an/.platformio/packages/framework-arduino-avr/cores/arduino -I/Users/an/.platformio/packages/framework-arduino-avr/variants/mega src/main.cpp",
         "directory": "/Users/an/Documents/Projects/carthing/software",
         "file": "src/main.cpp",
         "output": ".pio/build/megaatmega2560/src/main.cpp.o"
