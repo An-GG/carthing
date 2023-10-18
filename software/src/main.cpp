@@ -59,8 +59,11 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    int len = Serial.readBytesUntil('\n', inputBuffer, bufferSize);
-    inputBuffer[len] = '\0'; // Null-terminate the string
+      int len = Serial.readBytesUntil('\n', inputBuffer, bufferSize);
+      if (len > 0 && inputBuffer[len - 1] == '\r') {
+          len--;  // decrement the length to ignore the '\r' character
+      }
+      inputBuffer[len] = '\0'; // Null-terminate the string
 
     // Check and handle command
     if (strcmp(inputBuffer, "help") == 0) {
