@@ -15,7 +15,6 @@ if %ERRORLEVEL% neq 0 (
 )
 
 REM Show git diff
-echo Printing git diff:
 git diff
 if %ERRORLEVEL% neq 0 (
     echo Error occurred during git diff.
