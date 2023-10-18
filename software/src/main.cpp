@@ -5,44 +5,6 @@ char inputBuffer[bufferSize];
 char* vars[] = {"predicted_lock_state"};
 char predicted_lock_state[bufferSize] = "unknown"; // default state
 
-void setup() {
-  Serial.begin(9600);
-  Serial.println("carthing serial interface. type 'help' to get a list of available commands");
-  Serial.print("> ");
-}
-
-void loop() {
-  if (Serial.available()) {
-    int len = Serial.readBytesUntil('\n', inputBuffer, bufferSize);
-    inputBuffer[len] = '\0'; // Null-terminate the string
-
-    // Check and handle command
-    if (strcmp(inputBuffer, "help") == 0) {
-      displayHelp();
-    } else if (strcmp(inputBuffer, "unlock") == 0) {
-      // Add your 'unlock' functionality here
-      Serial.println("Unlock command received");
-    } else if (strcmp(inputBuffer, "lock") == 0) {
-      // Add your 'lock' functionality here
-      Serial.println("Lock command received");
-    } else if (strcmp(inputBuffer, "bluetooth_scan") == 0) {
-      // Add your 'bluetooth_scan' functionality here
-      Serial.println("Bluetooth scan started");
-    } else if (strcmp(inputBuffer, "rfid_scan") == 0) {
-      // Add your 'rfid_scan' functionality here
-      Serial.println("RFID scan started");
-    } else if (strncmp(inputBuffer, "get ", 4) == 0) {
-      getVar(inputBuffer + 4);
-    } else if (strncmp(inputBuffer, "set ", 4) == 0) {
-      setVar(inputBuffer + 4);
-    } else if (strcmp(inputBuffer, "list_vars") == 0) {
-      listVars();
-    } else {
-      Serial.println("Unknown command. Type 'help' for available commands.");
-    }
-    Serial.print("> ");
-  }
-}
 
 void displayHelp() {
   Serial.println("Available commands:");
@@ -83,6 +45,48 @@ void setVar(char* command) {
 void listVars() {
   for (int i = 0; i < sizeof(vars) / sizeof(vars[0]); i++) {
     Serial.println(vars[i]);
+  }
+}
+
+
+
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("carthing serial interface. type 'help' to get a list of available commands");
+  Serial.print("> ");
+}
+
+void loop() {
+  if (Serial.available()) {
+    int len = Serial.readBytesUntil('\n', inputBuffer, bufferSize);
+    inputBuffer[len] = '\0'; // Null-terminate the string
+
+    // Check and handle command
+    if (strcmp(inputBuffer, "help") == 0) {
+      displayHelp();
+    } else if (strcmp(inputBuffer, "unlock") == 0) {
+      // Add your 'unlock' functionality here
+      Serial.println("Unlock command received");
+    } else if (strcmp(inputBuffer, "lock") == 0) {
+      // Add your 'lock' functionality here
+      Serial.println("Lock command received");
+    } else if (strcmp(inputBuffer, "bluetooth_scan") == 0) {
+      // Add your 'bluetooth_scan' functionality here
+      Serial.println("Bluetooth scan started");
+    } else if (strcmp(inputBuffer, "rfid_scan") == 0) {
+      // Add your 'rfid_scan' functionality here
+      Serial.println("RFID scan started");
+    } else if (strncmp(inputBuffer, "get ", 4) == 0) {
+      getVar(inputBuffer + 4);
+    } else if (strncmp(inputBuffer, "set ", 4) == 0) {
+      setVar(inputBuffer + 4);
+    } else if (strcmp(inputBuffer, "list_vars") == 0) {
+      listVars();
+    } else {
+      Serial.println("Unknown command. Type 'help' for available commands.");
+    }
+    Serial.print("> ");
   }
 }
 
