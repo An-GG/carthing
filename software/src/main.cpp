@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <SPI.h>
+#include <MFRC522.h>
+
 
 const int bufferSize = 100; // buffer size for incoming serial data
 char inputBuffer[bufferSize];
