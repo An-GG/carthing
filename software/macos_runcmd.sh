@@ -6,4 +6,4 @@ echo "Printing git diff:"
 
 git diff
 
-platformio device monitor -p /dev/cu.usbmodem14301 --echo
+arduino-cli monitor -p /dev/cu.usbmodem14301 --echo
