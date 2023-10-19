@@ -17,3 +17,7 @@ https://youtu.be/2sSX5-SFbkQ?si=VjsjXH4zEkVEpWXu
 ![nvidia_taskmanager_screenshot](nvidia_taskmanager_screenshot.jpg)
 
 nice it has gpu accel mayb
+
+![gpu0](gpu0.png)
+
+nvm
