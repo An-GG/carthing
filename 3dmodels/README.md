@@ -21,3 +21,31 @@ nice it has gpu accel mayb
 ![gpu0](gpu0.png)
 
 nvm
+
+---
+
+time to give up
+
+
+![whatever](whatever.png)
+
+low poly 3d scan made in meshlab
+- should've prob used rear lidar from the beginning, would've preserved scale
+
+whatever
+
+---
+
+Reality Composer is unexpectedly trash at icp, damn <br>
+(iphone 14 pro max / ipad pro fall 2022) 
+
+![scan_scuffed1](scan_scuffed1.jpg)
+
+![scan_scuffed1](scan_scuffed2.jpg)
+
+prob useful for scale alignment in post
+
+
+
+
+
