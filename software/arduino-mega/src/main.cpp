@@ -2,6 +2,8 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
+#define UNLOCK_BTN_RELAY_PIN 22
+#define LOCK_BTN_RELAY_PIN 24
 
 const int bufferSize = 100; // buffer size for incoming serial data
 char inputBuffer[bufferSize];
@@ -58,6 +60,8 @@ void setup() {
   Serial.begin(9600);
   Serial.println("carthing serial interface. type 'help' to get a list of available commands");
   Serial.print("> ");
+  pinMode(UNLOCK_BTN_RELAY_PIN, OUTPUT);
+  pinMode(LOCK_BTN_RELAY_PIN, OUTPUT);
 }
 
 void loop() {
@@ -73,10 +77,19 @@ void loop() {
       displayHelp();
     } else if (strcmp(inputBuffer, "unlock") == 0) {
       // Add your 'unlock' functionality here
+      digitalWrite(UNLOCK_BTN_RELAY_PIN, HIGH);
+      delay(250);
+      digitalWrite(UNLOCK_BTN_RELAY_PIN, LOW);
       Serial.println("Unlock command received");
+
     } else if (strcmp(inputBuffer, "lock") == 0) {
+      
+      digitalWrite(LOCK_BTN_RELAY_PIN, HIGH);
+      delay(250);
+      digitalWrite(LOCK_BTN_RELAY_PIN, LOW);
       // Add your 'lock' functionality here
       Serial.println("Lock command received");
+    
     } else if (strcmp(inputBuffer, "bluetooth_scan") == 0) {
       // Add your 'bluetooth_scan' functionality here
       Serial.println("Bluetooth scan started");
