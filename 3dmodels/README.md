@@ -14,6 +14,6 @@ now you can right click on the mesh in a new part and click "convert to base fea
 https://youtu.be/2sSX5-SFbkQ?si=VjsjXH4zEkVEpWXu
 ```
 
-![](nvidia_taskmanger_screenshot.png)
+![nvidia_taskmanager_screenshot](nvidia_taskmanager_screenshot.jpg)
 
 nice it has gpu accel mayb
