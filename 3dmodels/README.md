@@ -71,7 +71,7 @@ cropping ->
 
 ---
 
-too much data still, **so apparently there's a single obvious correct software for simplifying hires meshes** 
+too much data still, **so apparently there's a single obvious correct software for simplifying hi-res meshes** 
 
 **do NOT fuck with meshlab, use this shit:** 
 
