@@ -45,6 +45,12 @@ Reality Composer is unexpectedly trash at icp, damn <br>
 
 prob useful for scale alignment in post
 
+---
+
+incredible scan detail from heges app
+
+![shape_rotation](shape_rotation.gif)
+
 
 
 
