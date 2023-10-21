@@ -1,2 +1,2 @@
 #!/usr/bin/env bash 
-pio run -t upload -t compiledb -t monitor
+/usr/local/bin/pio run -t upload -t compiledb -t monitor

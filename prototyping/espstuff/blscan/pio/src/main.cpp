@@ -10,7 +10,7 @@ BLEScan* pBLEScan;
 
 class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     void onResult(BLEAdvertisedDevice advertisedDevice) {
-      Serial.printf("Advertised Device: %s \n", advertisedDevice.toString().c_str());
+      Serial.printf("%s Advertised Device: %s \n", advertisedDevice.getName().c_str(), advertisedDevice.toString().c_str());
     }
 };
 
@@ -18,7 +18,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("Scanning...");
 
-  BLEDevice::init("");
+  BLEDevice::init("carthing esp32");
   pBLEScan = BLEDevice::getScan(); //create new scan
   pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
   pBLEScan->setActiveScan(true); //active scan uses more power, but get results faster
