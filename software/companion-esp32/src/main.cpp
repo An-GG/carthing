@@ -9,12 +9,12 @@ BLEScan* pBLEScan;
 
 class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     void onResult(BLEAdvertisedDevice advertisedDevice) {
-      Serial.printf("Advertised Device: %s \n", advertisedDevice.toString().c_str());
+      Serial.printf("%d  - \t Advertised Device: %s \n", advertisedDevice.getPayload(), advertisedDevice.toString().c_str());
     }
 };
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Scanning...");
 
   BLEDevice::init("");
