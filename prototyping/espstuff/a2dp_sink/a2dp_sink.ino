@@ -42,7 +42,7 @@ void audio_state_changed(esp_a2d_audio_state_t state, void* ptr) {
 }
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
     const i2s_config_t i2s_config = {
         .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX | I2S_MODE_DAC_BUILT_IN),
         .sample_rate = 44100, // corrected by info from bluetooth
