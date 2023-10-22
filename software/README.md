@@ -39,3 +39,11 @@ custom ios app
 https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h
 ```
 
+
+
+---
+
+
+LFG
+
+![prototyping/espstuff/a2dp_sink/a2dp_sink/airpods_ultra.png](prototyping/espstuff/a2dp_sink/a2dp_sink/airpods_ultra.png)

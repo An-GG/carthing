@@ -59,7 +59,12 @@ void setup() {
     a2dp_sink.set_on_volumechange(volumeChanged);
     a2dp_sink.set_on_connection_state_changed(connection_state_changed);
     a2dp_sink.set_on_audio_state_changed(audio_state_changed);
-    a2dp_sink.start("vMicro BT Speaker");
+	
+    a2dp_sink.start("AirPods Ultra");
+
+    Serial.println();
+    Serial.println();
+    Serial.println("Device Name: AirPods Ultra");
 }
 
 
