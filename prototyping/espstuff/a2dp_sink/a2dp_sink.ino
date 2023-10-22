@@ -34,6 +34,7 @@ void volumeChanged(int newVolume) {
 // for esp_a2d_connection_state_t see https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_a2dp.html#_CPPv426esp_a2d_connection_state_t
 void connection_state_changed(esp_a2d_connection_state_t state, void* ptr) {
     Serial.println(a2dp_sink.to_str(state));
+    
 }
 
 // for esp_a2d_audio_state_t see https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_a2dp.html#_CPPv421esp_a2d_audio_state_t
@@ -56,6 +57,7 @@ void setup() {
     };
 
     a2dp_sink.set_i2s_config(i2s_config);
+
     a2dp_sink.set_on_volumechange(volumeChanged);
     a2dp_sink.set_on_connection_state_changed(connection_state_changed);
     a2dp_sink.set_on_audio_state_changed(audio_state_changed);
