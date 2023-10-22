@@ -47,5 +47,5 @@ LFG
 
 <img width="511" alt="airpods_ultra" src="https://raw.githubusercontent.com/An-GG/carthing/master/prototyping/espstuff/a2dp_sink/airpods_ultra.png">
 
-still not sure how to achieve this without advertising as an audio device, hid controller/keyboard/mouse, or **heart rate monitor**
+still not sure how to achieve this without advertising as an audio device, hid controller/keyboard/mouse, or ~~heart rate monitor~~ [https://support.apple.com/en-us/HT204387](https://support.apple.com/en-us/HT204387)
 
