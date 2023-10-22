@@ -43,7 +43,9 @@ https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial
 
 ---
 
-
 LFG
 
-![prototyping/espstuff/a2dp_sink/a2dp_sink/airpods_ultra.png](prototyping/espstuff/a2dp_sink/a2dp_sink/airpods_ultra.png)
+<img width="511" alt="airpods_ultra" src="https://raw.githubusercontent.com/An-GG/carthing/master/prototyping/espstuff/a2dp_sink/airpods_ultra.png">
+
+
+
