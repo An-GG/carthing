@@ -49,3 +49,7 @@ LFG
 
 still not sure how to achieve this without advertising as an audio device, hid controller/keyboard/mouse, or ~~heart rate monitor~~ [https://support.apple.com/en-us/HT204387](https://support.apple.com/en-us/HT204387)
 
+
+[https://www.silabs.com/documents/public/application-notes/AN986.pdf](https://www.silabs.com/documents/public/application-notes/AN986.pdf)
+
+<img width="679" alt="Screenshot 2023-10-22 at 9 52 02 AM" src="https://github.com/An-GG/carthing/assets/20458990/35741b3d-606e-46f3-9f34-5fd0fca6f16c">
