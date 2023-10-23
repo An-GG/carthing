@@ -37,11 +37,15 @@ func bt_get_predicted_lock_state(lock_state_callback: ((predicted_lock_state) ->
 }
 
 func bt_send_unlock_command(lock_state_callback: @escaping ((predicted_lock_state) -> Void)) {
+    bt_controller.setLogHandler(logHandler: { log_str in print("LOG - Bluetooth Controller: " + log_str) })
     bt_controller.start()
     bt_controller.addTarget(serviceUUID: UUID.s, characteristicUUID: UUID.c) {
         print("Finished adding target")
-        bt_controller.read(serviceUUID: UUID.s, characteristicUUID: UUID.c) { d in
-            print(d)
+        bt_controller.read(serviceUUID: UUID.s, characteristicUUID: UUID.c) { data in
+            if (data != nil) {
+                print("pred_lock_state=\"" + String(bytes: data!, encoding: .ascii)! + "\"");
+            }
+            
         }
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
