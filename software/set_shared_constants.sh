@@ -11,7 +11,7 @@ PASSWORD="RY812"
 
 
 
-# ios app
+# 1. ios app
 
 # playground 
 echo "let SERVICE_UUID=\"$SERVICE_UUID\"" > simple-ios-keyfob/playgrounds/carkey-app.swiftpm/SecretConstants.swift 
@@ -21,6 +21,12 @@ echo "let PASSWORD=\"$SERVICE_UUID\"" >> simple-ios-keyfob/playgrounds/carkey-ap
 echo "let SERVICE_UUID=\"$SERVICE_UUID\"" > simple-ios-keyfob/xcode/carkey-app/carkey-app/SecretConstants.swift 
 echo "let PASSWORD=\"$SERVICE_UUID\"" >> simple-ios-keyfob/xcode/carkey-app/carkey-app/SecretConstants.swift 
 
+
+
+# 2. companion-esp32
+
+echo "#define SERVICE_UUID \"$SERVICE_UUID\"" > companion-esp32/src/SecretConstants.h
+echo "#define PASSWORD \"$PASSWORD\"" >> companion-esp32/src/SecretConstants.h
 
 
 
