@@ -29,7 +29,7 @@ enum predicted_lock_state {
 }
 
 
-let UUID = (s: CBUUID(string: SERVICE_UUID).uuidString, c: CBUUID(string: PREDICTED_LOCK_STATE_CHARACTERISTIC_UUID).uuidString)
+let UUID = (s: CBUUID(string: SERVICE_UUID).uuidString, c: CBUUID(string: COMMAND_INPUT_CHARACTERISTIC_UUID).uuidString)
 
 
 func bt_get_predicted_lock_state(lock_state_callback: ((predicted_lock_state) -> Void) ) {
@@ -39,15 +39,13 @@ func bt_get_predicted_lock_state(lock_state_callback: ((predicted_lock_state) ->
 func bt_send_unlock_command(lock_state_callback: @escaping ((predicted_lock_state) -> Void)) {
     bt_controller.setLogHandler(logHandler: { log_str in print("LOG - Bluetooth Controller: " + log_str) })
     bt_controller.start()
+    
     bt_controller.addTarget(serviceUUID: UUID.s, characteristicUUID: UUID.c) {
-        print("Finished adding target")
-        bt_controller.read(serviceUUID: UUID.s, characteristicUUID: UUID.c) { data in
-            if (data != nil) {
-                print("pred_lock_state=\"" + String(bytes: data!, encoding: .ascii)! + "\"");
-            }
-            
+        bt_controller.write(serviceUUID: UUID.s, characteristicUUID: UUID.c, data: String("hola!").data(using: .ascii)!) {
+            print("finished writing 'hola!'")
         }
     }
+    
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
         lock_state_callback(.unlocked)
     }

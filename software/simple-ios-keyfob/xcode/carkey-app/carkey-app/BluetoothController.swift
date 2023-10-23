@@ -31,7 +31,7 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
     private var centralManager: CBCentralManager!
     private var peripherals: [CBPeripheral] = []
     private var targetUUIDs: [(service: CBUUID, characteristic: CBUUID)] = []
-    private var targets_indexFirstByServiceUUID_thenByCharacteristicUUID: [String: [String: (p: CBPeripheral, s: CBService, c: CBCharacteristic, unfinishedResultCallbacks: [(Data?)->Void] ) ]] = [:]
+    private var targets_indexFirstByServiceUUID_thenByCharacteristicUUID: [String: [String: (p: CBPeripheral, s: CBService, c: CBCharacteristic, unfinishedResultCallbacks: [(Data?)->Void], unfinishedWriteCallbacks:  [()->Void]) ]] = [:]
     private var logHandler: (String) -> Void = { s in
         print(s)
     }
@@ -60,23 +60,57 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
     }
     
     public func read(serviceUUID: String, characteristicUUID: String, resultCallback: @escaping ((Data?)->Void)) {
-        
-        print(targets_indexFirstByServiceUUID_thenByCharacteristicUUID)
         let target = targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!
         target.p.readValue(for: target.c)
         targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!.unfinishedResultCallbacks.append(resultCallback)
     }
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        self.logHandler("    -- Characteristic Value Updated: " + String(describing: characteristic))
+        
+        
+        var val = characteristic.value
+        if (error != nil) {
+            self.logHandler("    >< ")
+            self.logHandler("    >< ERROR when reading value, returning nil. ")
+            self.logHandler("    ><       Characteristic Object: " + String(describing: characteristic))
+            self.logHandler("    ><       Error Object: " + String(describing: error))
+            self.logHandler("    >< ")
+            val = nil
+        } else {
+            self.logHandler("    -- Characteristic Value Updated: " + String(describing: characteristic))
+        }
+        
         
         while (targets_indexFirstByServiceUUID_thenByCharacteristicUUID[characteristic.service!.uuid.uuidString]![characteristic.uuid.uuidString]!.unfinishedResultCallbacks.count > 0) {
             let cb = targets_indexFirstByServiceUUID_thenByCharacteristicUUID[characteristic.service!.uuid.uuidString]![characteristic.uuid.uuidString]!.unfinishedResultCallbacks.popLast()!
-            cb(characteristic.value)
+            cb(val)
         }
     }
     
-    public func write() {
+    public func write(serviceUUID: String, characteristicUUID: String, data: Data, finishedWritingCallback: @escaping (() -> Void)) {
         
+        
+        
+        let target = targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!
+        target.p.writeValue(data, for: target.c, type: .withResponse)
+        targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!.unfinishedWriteCallbacks.append(finishedWritingCallback)
+    }
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+        if (error != nil) {
+            self.logHandler("    >< ")
+            self.logHandler("    >< ERROR when writing value. ")
+            self.logHandler("    ><       Characteristic Object: " + String(describing: characteristic))
+            self.logHandler("    ><       Error Object: " + String(describing: error))
+            self.logHandler("    >< ")
+        } else {
+            self.logHandler("    -- Characteristic Value Write: " + String(describing: characteristic))
+        }
+        
+        
+        while (targets_indexFirstByServiceUUID_thenByCharacteristicUUID[characteristic.service!.uuid.uuidString]![characteristic.uuid.uuidString]!.unfinishedWriteCallbacks.count > 0) {
+            let cb = targets_indexFirstByServiceUUID_thenByCharacteristicUUID[characteristic.service!.uuid.uuidString]![characteristic.uuid.uuidString]!.unfinishedWriteCallbacks.popLast()!
+            cb()
+        }
     }
     
     
@@ -144,7 +178,7 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
             for id in targetUUIDs {
                 if id.characteristic == characteristic.uuid && id.service == service.uuid {
                     self.logHandler("    ++ ^ Target Characteristic ^ ")
-                    let discoveredTarget = (p: peripheral, s: service, c: characteristic, unfinishedResultCallbacks: [] as [(Data?)->Void])
+                    let discoveredTarget = (p: peripheral, s: service, c: characteristic, unfinishedResultCallbacks: [] as [(Data?)->Void], unfinishedWriteCallbacks: [] as [()->Void])
                     
                     if (targets_indexFirstByServiceUUID_thenByCharacteristicUUID[id.service.uuidString] != nil) {
                         targets_indexFirstByServiceUUID_thenByCharacteristicUUID[id.service.uuidString]![id.characteristic.uuidString] = discoveredTarget
