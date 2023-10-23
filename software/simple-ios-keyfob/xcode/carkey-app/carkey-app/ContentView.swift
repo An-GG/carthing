@@ -14,34 +14,44 @@ struct ContentView: View {
     @State var loading = false
 
     var body: some View {
-        
-        VStack {
+        ZStack {
             
-            Button { unlock()  } label: { Label("Unlock", systemImage: "lock.open.fill").frame(maxWidth: 130) }
-                .controlSize(.large)
-                .buttonStyle(.borderedProminent)
-                .disabled(self.unlock_disabled)
-                .onTapGesture { disabled_unlock_tapped() }
+            MyUIViewControllerRepresentable()
             
-            Button { lock()  } label: {
-                Label("Lock", systemImage: "lock.fill").frame(maxWidth: 130) }
-                .controlSize(.large)
-                .buttonStyle(.borderedProminent)
-                .disabled(self.lock_disabled)
-                .onTapGesture { disabled_lock_tapped() }
+            VStack {
+                
+                Button { unlock()  } label: { Label("Unlock", systemImage: "lock.open.fill").frame(maxWidth: 130) }
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(self.unlock_disabled)
+                    .onTapGesture { disabled_unlock_tapped() }
+                
+                Button { lock()  } label: {
+                    Label("Lock", systemImage: "lock.fill").frame(maxWidth: 130) }
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(self.lock_disabled)
+                    .onTapGesture { disabled_lock_tapped() }
 
+                
+                
+            }.padding()
             
-            
-        }.padding()
-        
-            
-        Group {
-            if loading {
-                ProgressView()
-            } else {
-                ProgressView().hidden()
+                
+            Group {
+                if loading {
+                    ProgressView()
+                } else {
+                    ProgressView().hidden()
+                }
             }
+            
+            
+            
         }
+        
+        
+        
         
     }
     

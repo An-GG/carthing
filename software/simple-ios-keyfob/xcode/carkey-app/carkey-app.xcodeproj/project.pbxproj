@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1B1DD9F2AE693E300DA8485 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A1DCE7DF2AE64AF500ED5DC3 /* BluetoothKeyfob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothKeyfob.swift; sourceTree = "<group>"; };
 		A1DCE7E32AE65C0300ED5DC3 /* SecretConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstants.swift; sourceTree = "<group>"; };
 		A1FF20CF2AE63F160054C55D /* carkey-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "carkey-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,11 +37,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1B1DD9E2AE693E300DA8485 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1B1DD9F2AE693E300DA8485 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A1FF20C62AE63F160054C55D = {
 			isa = PBXGroup;
 			children = (
 				A1FF20D12AE63F160054C55D /* carkey-app */,
 				A1FF20D02AE63F160054C55D /* Products */,
+				A1B1DD9E2AE693E300DA8485 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,12 +287,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "carkey-app/carkey-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"carkey-app/Preview Content\"";
+				DEVELOPMENT_TEAM = QCLBA324PV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "carkey-app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Car Key";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Privacy - Bluetooth Always Usage Description";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,7 +307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ankushgirotra.carkey-app.carkey-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankushgirotra.carkey-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -306,12 +320,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "carkey-app/carkey-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"carkey-app/Preview Content\"";
+				DEVELOPMENT_TEAM = QCLBA324PV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "carkey-app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Car Key";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Privacy - Bluetooth Always Usage Description";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -322,7 +340,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ankushgirotra.carkey-app.carkey-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankushgirotra.carkey-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
