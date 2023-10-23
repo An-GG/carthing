@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1DCE7E02AE64AF500ED5DC3 /* BluetoothKeyfob.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DCE7DF2AE64AF500ED5DC3 /* BluetoothKeyfob.swift */; };
+		A18F66602AE6B9CF00308DFD /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F665F2AE6B9CE00308DFD /* BluetoothController.swift */; };
+		A1DCE7E02AE64AF500ED5DC3 /* Keyfob.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DCE7DF2AE64AF500ED5DC3 /* Keyfob.swift */; };
 		A1DCE7E42AE65C0300ED5DC3 /* SecretConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DCE7E32AE65C0300ED5DC3 /* SecretConstants.swift */; };
 		A1FF20D32AE63F160054C55D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF20D22AE63F160054C55D /* App.swift */; };
 		A1FF20D52AE63F160054C55D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF20D42AE63F160054C55D /* ContentView.swift */; };
@@ -16,8 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A18F665F2AE6B9CE00308DFD /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		A1B1DD9F2AE693E300DA8485 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		A1DCE7DF2AE64AF500ED5DC3 /* BluetoothKeyfob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothKeyfob.swift; sourceTree = "<group>"; };
+		A1DCE7DF2AE64AF500ED5DC3 /* Keyfob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyfob.swift; sourceTree = "<group>"; };
 		A1DCE7E32AE65C0300ED5DC3 /* SecretConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstants.swift; sourceTree = "<group>"; };
 		A1FF20CF2AE63F160054C55D /* carkey-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "carkey-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FF20D22AE63F160054C55D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -67,7 +69,8 @@
 			children = (
 				A1FF20D22AE63F160054C55D /* App.swift */,
 				A1FF20D42AE63F160054C55D /* ContentView.swift */,
-				A1DCE7DF2AE64AF500ED5DC3 /* BluetoothKeyfob.swift */,
+				A1DCE7DF2AE64AF500ED5DC3 /* Keyfob.swift */,
+				A18F665F2AE6B9CE00308DFD /* BluetoothController.swift */,
 				A1FF20D62AE63F180054C55D /* Assets.xcassets */,
 				A1FF20D82AE63F180054C55D /* Preview Content */,
 				A1DCE7E32AE65C0300ED5DC3 /* SecretConstants.swift */,
@@ -155,7 +158,8 @@
 			files = (
 				A1FF20D52AE63F160054C55D /* ContentView.swift in Sources */,
 				A1FF20D32AE63F160054C55D /* App.swift in Sources */,
-				A1DCE7E02AE64AF500ED5DC3 /* BluetoothKeyfob.swift in Sources */,
+				A1DCE7E02AE64AF500ED5DC3 /* Keyfob.swift in Sources */,
+				A18F66602AE6B9CF00308DFD /* BluetoothController.swift in Sources */,
 				A1DCE7E42AE65C0300ED5DC3 /* SecretConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,17 +34,18 @@ struct ContentView: View {
                     .onTapGesture { disabled_lock_tapped() }
 
                 
+                Group {
+                    if loading {
+                        ProgressView()
+                    } else {
+                        ProgressView().hidden()
+                    }
+                }.padding()
                 
             }.padding()
             
                 
-            Group {
-                if loading {
-                    ProgressView()
-                } else {
-                    ProgressView().hidden()
-                }
-            }
+            
             
             
             
