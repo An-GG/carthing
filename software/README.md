@@ -53,3 +53,46 @@ still not sure how to achieve this without advertising as an audio device, hid c
 [https://www.silabs.com/documents/public/application-notes/AN986.pdf](https://www.silabs.com/documents/public/application-notes/AN986.pdf)
 
 <img width="679" alt="Screenshot 2023-10-22 at 9 52 02 AM" src="https://github.com/An-GG/carthing/assets/20458990/35741b3d-606e-46f3-9f34-5fd0fca6f16c">
+
+---
+
+**they moved the goddamn plist**
+
+```
+https://developer.apple.com/forums/thread/727969
+```
+
+<img width="1878" alt="Screenshot 2023-10-23 at 7 54 46 AM" src="https://github.com/An-GG/carthing/assets/20458990/07d9b431-0c32-4f33-9543-35cefa2d2f86">
+
+<br>
+
+## it's here now wtf
+
+<img width="1254" alt="c" src="https://github.com/An-GG/carthing/assets/20458990/8ac3b663-14c3-4b01-8fc0-2b55e6c50346">
+
+confirmed you don't need to add more than the **Privacy - Bluetooth always usage description** to the info.plist for scanning, connecting, reading/writing for the keyfob app
+
+
+---
+
+<img width="507" alt="Screenshot 2023-10-23 at 8 20 31 AM" src="https://github.com/An-GG/carthing/assets/20458990/0f383a90-d0ed-4351-89f0-b898f633e9ad">
+<img width="717" alt="Screenshot 2023-10-23 at 8 14 18 AM" src="https://github.com/An-GG/carthing/assets/20458990/bf3ca2ce-3410-499c-891d-4382f1d33adc">
+
+
+
+there's a __required__ *empty* Info.plist in the project folder, but it ___explicitly doesn't show up in the object tree___ in Xcode ????  
+
+# 🤡 
+
+thank god this was the first result on google
+
+anywhen
+--- 
+
+
+
+
+
+
+
+
