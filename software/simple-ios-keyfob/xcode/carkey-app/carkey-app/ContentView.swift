@@ -42,14 +42,8 @@ struct ContentView: View {
                 ProgressView().hidden()
             }
         }
-            
-        
-        
         
     }
-    
-    
-    
     
     
     
