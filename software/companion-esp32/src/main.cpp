@@ -23,18 +23,12 @@ void setup() {
   BLEDevice::init("ESP32");
 
   BLEServer *pServer = BLEDevice::createServer();
-  BLEService *pServiceA = pServer->createService("0e2bd58b-72c5-47ea-ab2a-04ce94908a6d");
-  BLEService *pServiceB = pServer->createService(SERVICE_UUID);
+  BLEService *pMainService = pServer->createService(SERVICE_UUID);
 
-  uint32_t ble_characteristic_prop_flags = BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE;
-  Serial.print("ble_characteristic_prop_flags: "); Serial.println(ble_characteristic_prop_flags, HEX);
-  BLECharacteristic *pCharacteristicA = pServiceA->createCharacteristic("409a87f8-726d-49dc-8c1b-187e5fbedc4b",  ble_characteristic_prop_flags );
-  BLECharacteristic *pCharacteristicB = pServiceB->createCharacteristic("fd961c22-592b-4fbb-8c7d-fac314e95608", ble_characteristic_prop_flags);
-  pCharacteristicA->setValue("A");
-  pCharacteristicB->setValue("B");
+  BLECharacteristic *pCharacteristic_CommandInput = pMainService->createCharacteristic(COMMAND_INPUT_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_WRITE );
+  BLECharacteristic *pCharacteristic_PredictedLockState = pMainService->createCharacteristic(PREDICTED_LOCK_STATE_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_READ );
 
-  pServiceA->start();
-  pServiceB->start();
+  pMainService->start();
   
   pAdvertising = pServer->getAdvertising();
   //pAdvertising->setAppearance(128); // Generic Tag
