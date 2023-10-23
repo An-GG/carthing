@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLEService.h>
+#include <BLECharacteristic.h>
 #include "SecretConstants.h"
 
 
@@ -17,6 +18,39 @@ class ConnectionCallbacks: public BLEServerCallbacks {
   }
 };
 
+class CommandInputCallbacks: public BLECharacteristicCallbacks {
+
+  void onRead(BLECharacteristic* pCharacteristic) {
+    std::string val = pCharacteristic->getValue();
+    Serial.print("  > CommandInput Read: ");
+    Serial.println(val.c_str());
+  }
+
+  void onWrite(BLECharacteristic* pCharacteristic) {
+    std::string val = pCharacteristic->getValue();
+    Serial.print("  > CommandInput Write: ");
+    Serial.println(val.c_str());
+  }
+
+};
+
+
+class PredictedLockStateCallbacks: public BLECharacteristicCallbacks {
+
+  void onRead(BLECharacteristic* pCharacteristic) {
+    std::string val = pCharacteristic->getValue();
+    Serial.print("  > PredictedLockState Read: ");
+    Serial.println(val.c_str());
+  }
+
+  void onWrite(BLECharacteristic* pCharacteristic) {
+    std::string val = pCharacteristic->getValue();
+    Serial.print("  > PredictedLockState Write: ");
+    Serial.println(val.c_str());
+  }
+
+};
+
 
 void setup() {
 
@@ -31,12 +65,16 @@ void setup() {
   pMainService->start();
   
   pAdvertising = pServer->getAdvertising();
-  //pAdvertising->setAppearance(128); // Generic Tag
   pAdvertising->addServiceUUID(SERVICE_UUID);
-  //pAdvertising->addServiceUUID("0e2bd58b-72c5-47ea-ab2a-04ce94908a6d");
+  //BLEAdvertisementData advertisingData;
+  //pAdvertising->setAdvertisementData(advertisingData);
+  //pAdvertising->setAppearance(128); // Generic Tag
   pAdvertising->start();
 
   pServer->setCallbacks(new ConnectionCallbacks());
+  pCharacteristic_CommandInput->setCallbacks(new CommandInputCallbacks());
+  pCharacteristic_PredictedLockState->setCallbacks(new PredictedLockStateCallbacks());
+
 
   
 
