@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLEService.h>
+#include "SecretConstants.h"
 
 
 BLEAdvertising *pAdvertising;
@@ -23,7 +24,7 @@ void setup() {
 
   BLEServer *pServer = BLEDevice::createServer();
   BLEService *pServiceA = pServer->createService("0e2bd58b-72c5-47ea-ab2a-04ce94908a6d");
-  BLEService *pServiceB = pServer->createService("3483e726-a879-4889-afb0-242cefe0d89a");
+  BLEService *pServiceB = pServer->createService(SERVICE_UUID);
 
   uint32_t ble_characteristic_prop_flags = BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE;
   Serial.print("ble_characteristic_prop_flags: "); Serial.println(ble_characteristic_prop_flags, HEX);
@@ -37,7 +38,7 @@ void setup() {
   
   pAdvertising = pServer->getAdvertising();
   //pAdvertising->setAppearance(128); // Generic Tag
-  pAdvertising->addServiceUUID("3483e726-a879-4889-afb0-242cefe0d89a");
+  pAdvertising->addServiceUUID(SERVICE_UUID);
   //pAdvertising->addServiceUUID("0e2bd58b-72c5-47ea-ab2a-04ce94908a6d");
   pAdvertising->start();
 
