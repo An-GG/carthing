@@ -56,6 +56,21 @@ still not sure how to achieve this without advertising as an audio device, hid c
 
 ---
 
+
+# so for iOS
+
+using **SwiftUI**
+- admittedly really great templating syntax + beautiful defaults. if this was html i would love html.
+- implemented as
+    - a swift playground (compile and deploy all on ipad)
+    - xcode project
+ 
+both are swiftui with prob identical code  
+
+
+ -> xcode project 
+---
+
 **they moved the goddamn plist**
 
 ```
@@ -90,9 +105,64 @@ anywhen
 --- 
 
 
+ --> playgrounds project
+---
+
+setting up delegates for corebluetooth in swiftui from empty base class didn't work for some reason idk didn't look into it
+ - required inheretence pattern was big stupid
+  - ez pz with this
+
+inhereting a UIViewController seems to work tho, **but you have to add it to the view lmao** 
+
+# ¯\_(ツ)_/¯ 
+
+this scuffed shit will do for now
+```swift
+
+
+let appvc = ScannerViewController()
+
+
+class ScannerViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+    
+    var centralManager: CBCentralManager!
+    var peripheral: CBPeripheral!
+
+
+.
+.
+.
+
+
+class MainVC : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(appvc.view)
+        appvc.view.frame = view.frame
+    }
+    override func viewDidLayoutSubviews() {
+        appvc.view.frame = view.frame
+    }
+}
+
+struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> MainVC {
+        return MainVC()
+    }
+    func updateUIViewController(_ uiViewController: MainVC, context: Context) {
+    }
+}
+
+```
 
 
 
+
+
+https://github.com/An-GG/carthing/assets/20458990/ce36b7af-db1b-407d-98c6-88dba1b8c95b
+
+
+that's it. that's the entire app.
 
 
 
