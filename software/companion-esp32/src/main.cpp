@@ -54,6 +54,11 @@ class PredictedLockStateCallbacks: public BLECharacteristicCallbacks {
 
 void setup() {
 
+  Serial.begin(115200);
+  Serial.println();
+  Serial.print("Service UUID: ");
+  Serial.println(SERVICE_UUID);
+
   BLEDevice::init("ESP32");
 
   BLEServer *pServer = BLEDevice::createServer();
