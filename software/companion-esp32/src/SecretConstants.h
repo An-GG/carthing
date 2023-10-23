@@ -1,2 +1,3 @@
-#define SERVICE_UUID "0e2bd58b-72c5-47ea-ab2a-04ce94908a6d"
-#define PASSWORD "RY812"
+#define SERVICE_UUID "0e2bd58b-72c5-47ea-ab2a-04ce94908a6d" 
+#define PASSWORD "RY812" 
+#define CHARACTERISTIC_UUID "409a87f8-726d-49dc-8c1b-187e5fbedc4b"
