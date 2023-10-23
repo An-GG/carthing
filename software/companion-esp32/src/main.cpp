@@ -67,6 +67,8 @@ void setup() {
   BLECharacteristic *pCharacteristic_CommandInput = pMainService->createCharacteristic(COMMAND_INPUT_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_WRITE );
   BLECharacteristic *pCharacteristic_PredictedLockState = pMainService->createCharacteristic(PREDICTED_LOCK_STATE_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_READ );
 
+  pCharacteristic_PredictedLockState->setValue("unknown");
+
   pMainService->start();
   
   pAdvertising = pServer->getAdvertising();
