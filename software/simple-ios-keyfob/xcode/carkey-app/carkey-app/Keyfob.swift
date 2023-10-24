@@ -29,30 +29,32 @@ enum predicted_lock_state {
 }
 
 
-let UUID = (s: CBUUID(string: SERVICE_UUID).uuidString, c: CBUUID(string: COMMAND_INPUT_CHARACTERISTIC_UUID).uuidString)
+let UUID_CMD_WRITE_INPUT = (s: CBUUID(string: SERVICE_UUID).uuidString, c: CBUUID(string: COMMAND_INPUT_CHARACTERISTIC_UUID).uuidString)
+let UUID_LOCK_STATE_OUTPUT = (s: CBUUID(string: SERVICE_UUID).uuidString, c: CBUUID(string: PREDICTED_LOCK_STATE_CHARACTERISTIC_UUID).uuidString)
 
 
-func bt_get_predicted_lock_state(lock_state_callback: ((predicted_lock_state) -> Void) ) {
-    lock_state_callback(.unknown)
+func bt_get_predicted_lock_state(lock_state_callback: @escaping ((predicted_lock_state) -> Void) ) {
+    bt_read_value(sUUID: UUID_LOCK_STATE_OUTPUT.s, cUUID: UUID_LOCK_STATE_OUTPUT.c) { data in
+        let d = data!
+        let state_string = String(bytes: d, encoding: .ascii)!
+        var state: predicted_lock_state? = nil
+        if (state_string == "locked") { state = .locked }
+        if (state_string == "unlocked") { state = .unlocked }
+        if (state_string == "unknown") { state = .unknown }
+        lock_state_callback(state!)
+    }
 }
 
 func bt_send_unlock_command(lock_state_callback: @escaping ((predicted_lock_state) -> Void)) {
-    bt_controller.setLogHandler(logHandler: { log_str in print("LOG - Bluetooth Controller: " + log_str) })
-    bt_controller.start()
-    
-    bt_controller.addTarget(serviceUUID: UUID.s, characteristicUUID: UUID.c) {
-        bt_controller.write(serviceUUID: UUID.s, characteristicUUID: UUID.c, data: String("hola!").data(using: .ascii)!) {
-            print("finished writing 'hola!'")
-        }
-    }
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+    let data = String("unlock").data(using: .ascii)!
+    bt_write_value(sUUID: UUID_CMD_WRITE_INPUT.s, cUUID: UUID_CMD_WRITE_INPUT.c, data: data) {
         lock_state_callback(.unlocked)
     }
 }
 
 func bt_send_lock_command(lock_state_callback: @escaping ((predicted_lock_state) -> Void)) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+    let data = String("lock").data(using: .ascii)!
+    bt_write_value(sUUID: UUID_CMD_WRITE_INPUT.s, cUUID: UUID_CMD_WRITE_INPUT.c, data: data) {
         lock_state_callback(.locked)
     }
 }

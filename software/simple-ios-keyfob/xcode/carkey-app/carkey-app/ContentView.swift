@@ -32,6 +32,11 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .disabled(self.lock_disabled)
                     .onTapGesture { disabled_lock_tapped() }
+                
+                Button { read()  } label: {
+                    Label("Read", systemImage: "lock.fill").frame(maxWidth: 130) }
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
 
                 
                 Group {
@@ -44,19 +49,10 @@ struct ContentView: View {
                 
             }.padding()
             
-                
-            
-            
-            
             
         }
         
-        
-        
-        
     }
-    
-    
     
     
     
@@ -68,7 +64,12 @@ struct ContentView: View {
 
     func unlock() {
         unlock_disabled = true
-         bt_send_unlock_command(lock_state_callback: self.lock_state_callback(state:))
+        bt_send_unlock_command(lock_state_callback: self.lock_state_callback(state:))
+        loading = true
+    }
+    
+    func read() {
+        bt_get_predicted_lock_state(lock_state_callback: self.lock_state_callback(state:))
         loading = true
     }
     

@@ -11,15 +11,32 @@ import UIKit
 import SwiftUI
 
 
-let bt_controller = BluetoothController()
+var bt_controller = BluetoothController()
 
 
-func bt_read_value(sUUID: String, cUUID: String) -> Data? {
-    return nil
+func bt_read_value(sUUID: String, cUUID: String, resultCallback: @escaping (Data?)->Void) {
+    bt_controller = BluetoothController()
+    mvc.set_btvc(v: bt_controller)
+    bt_controller.start()
+    bt_controller.addTarget(serviceUUID: sUUID, characteristicUUID: cUUID) {
+        bt_controller.read(serviceUUID: sUUID, characteristicUUID: cUUID) { data in
+            bt_controller.stop()
+            resultCallback(data)
+        }
+    }
+    
 }
 
-func bt_write_value(sUUID: String, cUUID: String, data: Data) {
-    
+func bt_write_value(sUUID: String, cUUID: String, data: Data, writeCallback: @escaping ()->Void) {
+    bt_controller = BluetoothController()
+    mvc.set_btvc(v: bt_controller)
+    bt_controller.start()
+    bt_controller.addTarget(serviceUUID: sUUID, characteristicUUID: cUUID) {
+        bt_controller.write(serviceUUID: sUUID, characteristicUUID: cUUID, data: data) {
+            bt_controller.stop()
+            writeCallback()
+        }
+    }
 }
 
 
@@ -45,19 +62,16 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
         self.targetUUIDs.append((service: CBUUID(string: serviceUUID), characteristic: CBUUID(string: characteristicUUID)))
         
         if centralManager.state == .poweredOn {
-            var serviceUUIDs: [CBUUID] = []
+            /*var serviceUUIDs: [CBUUID] = []
             for s in self.targetUUIDs {
                 serviceUUIDs.append(s.service)
-            }
-            centralManager.scanForPeripherals(withServices: serviceUUIDs)
+            }*/
+            centralManager.scanForPeripherals(withServices: nil)
         }
         unfinishedAddTargetCallbacks.append((serviceUUID: CBUUID(string: serviceUUID), characteristicUUID: CBUUID(string: characteristicUUID), handle:finishedAddingTargetCallback ))
     }
     
-    public func start() {
-        self.centralManager = CBCentralManager(delegate: self, queue: nil)
-        self.logHandler("Started.")
-    }
+   
     
     public func read(serviceUUID: String, characteristicUUID: String, resultCallback: @escaping ((Data?)->Void)) {
         let target = targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!
@@ -115,6 +129,15 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
     
     
     
+    public func stop() {
+        self.centralManager.stopScan()
+    }
+    
+    
+    public func start() {
+        self.centralManager = CBCentralManager(delegate: self, queue: nil)
+        self.logHandler("Started.")
+    }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
@@ -128,9 +151,7 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         self.logHandler("UUID: " + peripheral.identifier.uuidString + " -- Peripheral Name: " + (peripheral.name ?? "undefined"))
@@ -205,7 +226,9 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
         }
     }
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     
     
@@ -213,19 +236,31 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
 
 
 class MainVC : UIViewController {
+    
+    var btvc: BluetoothController = BluetoothController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(bt_controller.view)
-        bt_controller.view.frame = view.frame
+        self.btvc.view.frame = self.view.frame
     }
     override func viewDidLayoutSubviews() {
-        bt_controller.view.frame = view.frame
+        self.btvc.view.frame = self.view.frame
+    }
+    
+    func set_btvc(v: BluetoothController) {
+        if (btvc.view != nil) { btvc.view.removeFromSuperview() }
+        self.btvc = v
+        self.view.addSubview(btvc.view)
+        self.btvc.view.frame = self.view.frame
     }
 }
 
+
+var mvc = MainVC()
 struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> MainVC {
-        return MainVC()
+        mvc = MainVC()
+        return mvc
     }
     func updateUIViewController(_ uiViewController: MainVC, context: Context) {
     }
