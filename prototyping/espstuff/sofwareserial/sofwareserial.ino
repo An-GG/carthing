@@ -6,7 +6,7 @@
 EspSoftwareSerial::UART myPort;
 
 void setup() {
-  Serial.begin(115200); // Standard hardware serial port
+  Serial.begin(9600); // Standard hardware serial port
 
   myPort.begin(38400, SWSERIAL_8N1, MYPORT_RX, MYPORT_TX, false);
   if (!myPort) { // If the object did not initialize, then its configuration is invalid
