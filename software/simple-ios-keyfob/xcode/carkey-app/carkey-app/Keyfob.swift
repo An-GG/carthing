@@ -48,13 +48,13 @@ func bt_get_predicted_lock_state(lock_state_callback: @escaping ((predicted_lock
 func bt_send_unlock_command(lock_state_callback: @escaping ((predicted_lock_state) -> Void)) {
     let data = String("unlock").data(using: .ascii)!
     bt_write_value(sUUID: UUID_CMD_WRITE_INPUT.s, cUUID: UUID_CMD_WRITE_INPUT.c, data: data) {
-        lock_state_callback(.unlocked)
+        bt_get_predicted_lock_state(lock_state_callback: lock_state_callback)
     }
 }
 
 func bt_send_lock_command(lock_state_callback: @escaping ((predicted_lock_state) -> Void)) {
     let data = String("lock").data(using: .ascii)!
     bt_write_value(sUUID: UUID_CMD_WRITE_INPUT.s, cUUID: UUID_CMD_WRITE_INPUT.c, data: data) {
-        lock_state_callback(.locked)
+        bt_get_predicted_lock_state(lock_state_callback: lock_state_callback)
     }
 }

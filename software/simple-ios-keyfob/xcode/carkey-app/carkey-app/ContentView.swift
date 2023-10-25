@@ -12,8 +12,11 @@ struct ContentView: View {
     @State var unlock_disabled = false
     @State var lock_disabled = false
     @State var loading = false
+    
+    @State var hide_publicvar = true
 
     var body: some View {
+        
         ZStack {
             
             MyUIViewControllerRepresentable()
@@ -28,16 +31,12 @@ struct ContentView: View {
                 
                 Button { lock()  } label: {
                     Label("Lock", systemImage: "lock.fill").frame(maxWidth: 130) }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    .disabled(self.lock_disabled)
-                    .onTapGesture { disabled_lock_tapped() }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                .disabled(self.lock_disabled)
+                .onTapGesture { disabled_lock_tapped() }
                 
-                Button { read()  } label: {
-                    Label("Read", systemImage: "lock.fill").frame(maxWidth: 130) }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-
+               
                 
                 Group {
                     if loading {
@@ -47,11 +46,12 @@ struct ContentView: View {
                     }
                 }.padding()
                 
-            }.padding()
-            
+                
+                
+                
+            }
             
         }
-        
     }
     
     
@@ -75,11 +75,11 @@ struct ContentView: View {
     
     
     func disabled_lock_tapped() {
-        lock()
+        //lock()
     }
 
     func disabled_unlock_tapped() {
-        unlock()
+        //unlock()
     }
     
     func lock_state_callback(state:predicted_lock_state) {
@@ -96,6 +96,12 @@ struct ContentView: View {
             self.lock_disabled = false
         }
         loading = false
+    }
+    
+    
+    
+    func displayPublicVariable() {
+        hide_publicvar = false
     }
     
 

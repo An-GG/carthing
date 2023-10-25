@@ -102,11 +102,10 @@ class BluetoothController: UIViewController, CBCentralManagerDelegate, CBPeriphe
     
     public func write(serviceUUID: String, characteristicUUID: String, data: Data, finishedWritingCallback: @escaping (() -> Void)) {
         
-        
-        
         let target = targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!
         target.p.writeValue(data, for: target.c, type: .withResponse)
         targets_indexFirstByServiceUUID_thenByCharacteristicUUID[serviceUUID]![characteristicUUID]!.unfinishedWriteCallbacks.append(finishedWritingCallback)
+        
     }
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         
