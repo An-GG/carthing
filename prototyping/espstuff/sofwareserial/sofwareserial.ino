@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 
 #define MYPORT_TX 12
-#define MYPORT_RX 13
+#define MYPORT_RX 14
 
 EspSoftwareSerial::UART myPort;
 
@@ -15,6 +15,10 @@ void setup() {
       delay (1000);
     }
   } 
+
+    Serial.println();
+    Serial.println("Valid EspSoftwareSerial pin configuration!"); 
+    Serial.println();
 
 }
 
