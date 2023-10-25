@@ -24,5 +24,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  if (myPort.available()) {
+    String s = myPort.readString()
+    Serial.println("Recieved: " + s);
+    delay(100);
+    myPort.write("Recieved: " + s);
+  }
 }
