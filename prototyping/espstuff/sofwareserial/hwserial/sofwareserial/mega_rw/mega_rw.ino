@@ -11,6 +11,9 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   while (Serial1.available()) {
-    Serial.write(Serial1.read());
+    Serial.println("readString: " > Serial1.readString());
   }
+  delay(100);
+  Serial.println();
+  Serial.println("---");
 }

@@ -7,8 +7,7 @@ void setup() {
 }
 
 void loop() {
-  Serial1.write("\nabc\n");
-  Serial.write("\nabc\n");
-  delay(1000);
-
+  Serial1.prinln("abc");
+  Serial.println("abc");
+  delay(500);
 }
