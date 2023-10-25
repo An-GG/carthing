@@ -14,60 +14,71 @@ struct ContentView: View {
     @State var loading = false
     
     var body: some View {
-        
-        VStack {
+        ZStack {
             
-            Button { unlock()  } label: { Label("Unlock", systemImage: "lock.open.fill").frame(maxWidth: 130) }
+            MyUIViewControllerRepresentable()
+            
+            VStack {
+                
+                Button { unlock()  } label: { Label("Unlock", systemImage: "lock.open.fill").frame(maxWidth: 130) }
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(self.unlock_disabled)
+                    .onTapGesture { disabled_unlock_tapped() }
+                
+                Button { lock()  } label: {
+                    Label("Lock", systemImage: "lock.fill").frame(maxWidth: 130) }
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
-                .disabled(self.unlock_disabled)
-                .onTapGesture { disabled_unlock_tapped() }
+                .disabled(self.lock_disabled)
+                .onTapGesture { disabled_lock_tapped() }
+                
+                
+                Group {
+                    if loading {
+                        ProgressView()
+                    } else {
+                        ProgressView().hidden()
+                    }
+                }.padding()
+                
+            }.padding()
             
-            Button { lock()  } label: {
-                Label("Lock", systemImage: "lock.fill").frame(maxWidth: 130) }
-            .controlSize(.large)
-            .buttonStyle(.borderedProminent)
-            .disabled(self.lock_disabled)
-            .onTapGesture { disabled_lock_tapped() }
             
-            
-            
-        }.padding()
-        
-        
-        Group {
-            if loading {
-                ProgressView()
-            } else {
-                ProgressView().hidden()
-            }
         }
         
     }
     
     
     
-    
-    
     func lock() {
         lock_disabled = true
-        bt_send_lock_command(lock_state_callback: self.lock_state_callback(state:))
+        bt_send_lock_command(lock_state_callback: lock_state_callback(state:))
         loading = true
     }
     
     func unlock() {
         unlock_disabled = true
-        bt_send_unlock_command(lock_state_callback: self.lock_state_callback(state:))
+        bt_send_unlock_command(lock_state_callback: lock_state_callback(state:))
+        loading = true
+    }
+    
+    func read() {
+        bt_get_predicted_lock_state(lock_state_callback: self.lock_state_callback(state:))
         loading = true
     }
     
     
     func disabled_lock_tapped() {
-        lock()
+        if (!loading) {
+            lock()
+        }
     }
     
     func disabled_unlock_tapped() {
-        unlock()
+        if (!loading) {
+            unlock()
+        }
     }
     
     func lock_state_callback(state:predicted_lock_state) {
@@ -87,4 +98,12 @@ struct ContentView: View {
     }
     
     
+}
+
+
+
+
+
+#Preview {
+    ContentView()
 }

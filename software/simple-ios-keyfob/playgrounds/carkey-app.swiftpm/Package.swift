@@ -29,6 +29,9 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+            ],
+            capabilities: [
+                .bluetoothAlways(purposeString: "Swift Playgrounds Bluetooth Purpose String")
             ]
         )
     ],
