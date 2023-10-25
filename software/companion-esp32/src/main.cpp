@@ -14,12 +14,16 @@ BLECharacteristic *pCharacteristic_PredictedLockState;
 
 
 void lock() {
+  Serial2.write('L');
   pCharacteristic_PredictedLockState->setValue("locked");
+  Serial.println("  - 'L' written to Serial2");
 }
 
 
 void unlock() {
+  Serial2.write('U');
   pCharacteristic_PredictedLockState->setValue("unlocked");
+  Serial.println("  - 'U' written to Serial2");
 }
 
 
@@ -51,9 +55,9 @@ class CommandInputCallbacks: public BLECharacteristicCallbacks {
     std::string val = pCharacteristic->getValue();
     Serial.print("  > CommandInput Write: ");
     Serial.println(val.c_str());
-
-    if (val.c_str() == "lock") { lock(); }
-    if (val.c_str() == "unlock") { unlock(); }
+     
+    if (val == "lock") { lock(); }
+    if (val == "unlock") { unlock(); }
   }
 
 };
@@ -77,6 +81,8 @@ class PredictedLockStateCallbacks: public BLECharacteristicCallbacks {
 
 
 void setup() {
+
+  Serial2.begin(9600, SERIAL_8N1, 16, 17);
 
   Serial.begin(115200);
   Serial.println();

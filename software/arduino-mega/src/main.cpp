@@ -1,14 +1,26 @@
 #include <Arduino.h>
 #include <SPI.h>
-#include <MFRC522.h>
 
-#define UNLOCK_BTN_RELAY_PIN 22
-#define LOCK_BTN_RELAY_PIN 24
+#define UNLOCK_BTN_RELAY_PIN 24
+#define LOCK_BTN_RELAY_PIN 22
 
 const int bufferSize = 100; // buffer size for incoming serial data
 char inputBuffer[bufferSize];
-char* vars[] = {"predicted_lock_state"};
+const char* vars[] = {"predicted_lock_state"};
 char predicted_lock_state[bufferSize] = "unknown"; // default state
+
+
+void lock() {
+      digitalWrite(LOCK_BTN_RELAY_PIN, HIGH);
+      delay(250);
+      digitalWrite(LOCK_BTN_RELAY_PIN, LOW);
+}
+
+void unlock() {
+      digitalWrite(UNLOCK_BTN_RELAY_PIN, HIGH);
+      delay(250);
+      digitalWrite(UNLOCK_BTN_RELAY_PIN, LOW);
+}
 
 
 void displayHelp() {
@@ -54,9 +66,9 @@ void listVars() {
 }
 
 
-
-
 void setup() {
+  Serial1.begin(9600);
+
   Serial.begin(9600);
   Serial.println("carthing serial interface. type 'help' to get a list of available commands");
   Serial.print("> ");
@@ -76,20 +88,11 @@ void loop() {
     if (strcmp(inputBuffer, "help") == 0) {
       displayHelp();
     } else if (strcmp(inputBuffer, "unlock") == 0) {
-      // Add your 'unlock' functionality here
-      digitalWrite(UNLOCK_BTN_RELAY_PIN, HIGH);
-      delay(250);
-      digitalWrite(UNLOCK_BTN_RELAY_PIN, LOW);
       Serial.println("Unlock command received");
-
+      unlock();
     } else if (strcmp(inputBuffer, "lock") == 0) {
-      
-      digitalWrite(LOCK_BTN_RELAY_PIN, HIGH);
-      delay(250);
-      digitalWrite(LOCK_BTN_RELAY_PIN, LOW);
-      // Add your 'lock' functionality here
       Serial.println("Lock command received");
-    
+      lock();
     } else if (strcmp(inputBuffer, "bluetooth_scan") == 0) {
       // Add your 'bluetooth_scan' functionality here
       Serial.println("Bluetooth scan started");
@@ -106,6 +109,17 @@ void loop() {
       Serial.println("Unknown command. Type 'help' for available commands.");
     }
     Serial.print("> ");
+  }
+
+  if (Serial1.available()) {
+    char c = Serial1.read();
+    Serial.println();
+    Serial.print("'");
+    Serial.print(c);
+    Serial.println(+ "' recieved on Serial1.");
+    Serial.print("> ");
+    if (c == 'L') { lock(); } 
+    if (c == 'U') { unlock(); }
   }
 }
 
