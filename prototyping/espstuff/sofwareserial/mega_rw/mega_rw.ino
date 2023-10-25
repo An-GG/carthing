@@ -2,7 +2,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial1.begin(38400);
   Serial.begin(9600);
-  Serial.println("> Mega 2560")
+  Serial.println("> Mega 2560");
 }
 
 void loop() {
