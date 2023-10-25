@@ -7,6 +7,27 @@
 
 BLEAdvertising *pAdvertising;
 
+BLECharacteristic *pCharacteristic_CommandInput;
+BLECharacteristic *pCharacteristic_PredictedLockState;
+
+
+
+
+void lock() {
+  pCharacteristic_PredictedLockState->setValue("locked");
+}
+
+
+void unlock() {
+  pCharacteristic_PredictedLockState->setValue("unlocked");
+}
+
+
+
+
+
+
+
 class ConnectionCallbacks: public BLEServerCallbacks {
   void onConnect(BLEServer *pServer) {
     Serial.println("--> Device Connected.");
@@ -30,6 +51,9 @@ class CommandInputCallbacks: public BLECharacteristicCallbacks {
     std::string val = pCharacteristic->getValue();
     Serial.print("  > CommandInput Write: ");
     Serial.println(val.c_str());
+
+    if (val.c_str() == "lock") { lock(); }
+    if (val.c_str() == "unlock") { unlock(); }
   }
 
 };
@@ -64,8 +88,8 @@ void setup() {
   BLEServer *pServer = BLEDevice::createServer();
   BLEService *pMainService = pServer->createService(SERVICE_UUID);
 
-  BLECharacteristic *pCharacteristic_CommandInput = pMainService->createCharacteristic(COMMAND_INPUT_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_WRITE );
-  BLECharacteristic *pCharacteristic_PredictedLockState = pMainService->createCharacteristic(PREDICTED_LOCK_STATE_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_READ );
+  pCharacteristic_CommandInput = pMainService->createCharacteristic(COMMAND_INPUT_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_WRITE );
+  pCharacteristic_PredictedLockState = pMainService->createCharacteristic(PREDICTED_LOCK_STATE_CHARACTERISTIC_UUID,  BLECharacteristic::PROPERTY_READ );
 
   pCharacteristic_PredictedLockState->setValue("unknown");
 
