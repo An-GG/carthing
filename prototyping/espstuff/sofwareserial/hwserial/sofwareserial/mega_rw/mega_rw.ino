@@ -10,10 +10,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  while (Serial1.available()) {
-    Serial.println("readString: " + Serial1.readString());
-  }
+  Serial.println("Hello.");
   delay(100);
-  Serial.println();
-  Serial.println("---");
 }
