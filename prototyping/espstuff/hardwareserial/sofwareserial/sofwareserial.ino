@@ -8,7 +8,10 @@ void setup() {
 }
 
 void loop() {
-  while (Serial2.available()) {
-    Serial.print(char(Serial2.read()));
-  }
+    delay(5000);
+    Serial2.println("henlo");
+    Serial.println("henlo");
+    delay(2000);
+    Serial2.write("henlo\n");
+    Serial.write("henlo\n");
 }
