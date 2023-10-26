@@ -52,18 +52,28 @@ still not sure how to achieve this without advertising as an audio device, hid c
 
 [https://www.silabs.com/documents/public/application-notes/AN986.pdf](https://www.silabs.com/documents/public/application-notes/AN986.pdf)
 
+|esp32 supports |apple supports|
+|---|---|
+|HFP AG |- Hands-Free Profile (**HFP** 1.8)|
+| |- Phone Book Access Profile (**PBAP** 1.2)|
+|A2DP |- Advanced Audio Distribution Profile (**A2DP** 1.4)|
+|* |    - *Audio/Video Remote Control Profile (**AVRCP** 1.6)|
+| |- Personal Area Network (**PAN**) Profile|
+|HID |- Human Interface Device (**HID**) Profile|
+| |- Message Access Profile (**MAP** 1.4)|
+| |- Braille - hhhhhMMMMHmmMMMMM 🤔|
+| |- Wireless iPhone Accessory Protocol (**WiAP**) (assuming this is not worth exploring (i like making shit assumptions))|
+|SPP (serial) | |
+|L2CAP (lower level hw access?) | |
+|SDP service discovery protocol (but A2DP doesnt use it, not universal) | |
 
-|apple supports|
-|---|
-|- Hands-Free Profile (**HFP** 1.8)|
-|- Phone Book Access Profile (**PBAP** 1.2)|
-|- Advanced Audio Distribution Profile (**A2DP** 1.4)|
-|    - *Audio/Video Remote Control Profile (**AVRCP** 1.6)|
-|- Personal Area Network (**PAN**) Profile|
-|- Human Interface Device (**HID**) Profile|
-|- Message Access Profile (**MAP** 1.4)|
-|- Braille - hhhhhMMMMHmmMMMMM 🤔|
-|- Wireless iPhone Accessory Protocol (**WiAP**) (assuming this is not worth exploring (i like making shit assumptions))|
+
+from: 
+```
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_l2cap_bt.html
+```
+
+<img width="371" alt="Screenshot 2023-10-26 at 11 42 55 AM" src="https://github.com/An-GG/carthing/assets/20458990/f5f32228-530a-44fa-8d04-25e58ee6e65f">
 
 
 
