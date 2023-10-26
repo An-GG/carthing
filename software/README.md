@@ -52,6 +52,21 @@ still not sure how to achieve this without advertising as an audio device, hid c
 
 [https://www.silabs.com/documents/public/application-notes/AN986.pdf](https://www.silabs.com/documents/public/application-notes/AN986.pdf)
 
+
+|apple supports|
+|---|
+|- Hands-Free Profile (**HFP** 1.8)|
+|- Phone Book Access Profile (**PBAP** 1.2)|
+|- Advanced Audio Distribution Profile (**A2DP** 1.4)|
+|    - *Audio/Video Remote Control Profile (**AVRCP** 1.6)|
+|- Personal Area Network (**PAN**) Profile|
+|- Human Interface Device (**HID**) Profile|
+|- Message Access Profile (**MAP** 1.4)|
+|- Braille - hhhhhMMMMHmmMMMMM 🤔|
+|- Wireless iPhone Accessory Protocol (**WiAP**) (assuming this is not worth exploring (i like making shit assumptions))|
+
+
+
 <img width="679" alt="Screenshot 2023-10-22 at 9 52 02 AM" src="https://github.com/An-GG/carthing/assets/20458990/35741b3d-606e-46f3-9f34-5fd0fca6f16c">
 
 ---
