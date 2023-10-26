@@ -210,3 +210,12 @@ that's it. that's the entire app.
 ## use rssi + tricks to achieve tesla passive carkey  ==without background app refresh==
 
 
+> Espressif ( Nvidia if iot devkits were GPUs ) provides full stack first party IDE which is really nice espc since there are already lots of variants of nodemcu boards
+```
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#get-started-prerequisites
+```
+
+<img width="1436" alt="peak computer" src="https://github.com/An-GG/carthing/assets/20458990/4319681b-4a2f-4859-b459-42aac67c4964">
+
+
+
