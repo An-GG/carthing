@@ -47,6 +47,19 @@ LFG
 
 <img width="511" alt="airpods_ultra" src="https://raw.githubusercontent.com/An-GG/carthing/master/prototyping/espstuff/a2dp_sink/airpods_ultra.png">
 
+---
+
+## so originally
+we were avoiding implementing a HID device for security / privacy reasons but the reality is
+<img width="667" alt="Screenshot 2023-10-26 at 12 09 13 PM" src="https://github.com/An-GG/carthing/assets/20458990/563e91ac-e2da-4845-b81d-5b055d44bea8">
+
+
+**basically any of these could be HID input and it's not really clear anyway, so**
+
+---
+
+
+
 still not sure how to achieve this without advertising as an audio device, hid controller/keyboard/mouse, or ~~heart rate monitor~~ [https://support.apple.com/en-us/HT204387](https://support.apple.com/en-us/HT204387)
 
 
