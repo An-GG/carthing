@@ -56,9 +56,21 @@ we were avoiding implementing a HID device for security / privacy reasons but th
 
 **basically any of these could be HID input and it's not really clear anyway, so**
 
-> edit: **holy shit it literally does actually look the same lmao**
+> edit: **holy shit it literally does actually look exactly the same lmao**
+
+![btflip](https://github.com/An-GG/carthing/assets/20458990/9e27e8e0-3e07-4b78-8fd2-51c2872283b6)
+
+>>> **ok yeah** going for security or whatever was mega low IQ decision making, should've actually looked at implementation first. *after a device is paired it can just casually become a HID device* ***and still stay paired***
 
 
+
+<img width="507" alt="IMG_5200" src="https://github.com/An-GG/carthing/assets/20458990/16368639-92b1-4aca-ab87-2f64992806c9">
+
+it looks exactly the same to the user and ios will reconnect just fine
+
+---
+
+#### bottom line: use whatever bt protocol its fine
 
 ---
 
