@@ -14,9 +14,9 @@ prototyping/espstuff/a2dp_sink/a2dp_sink.ino
 https://www.visualmicro.com/page/Easy-DIY-Bluetooth-Speaker-Project.aspx
 ```
 
-# the project is now very rapidly approaching scuffed and unmaintable code territory 
+### ~~the project is now very rapidly approaching scuffed and unmaintable code territory~~ 
+its aight 
 
---- 
 
 alternative:
 abandon pairing, literally just use advertised device name and check rssi
