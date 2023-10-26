@@ -58,6 +58,8 @@ we were avoiding implementing a HID device for security / privacy reasons but th
 
 > edit: **holy shit it literally does actually look exactly the same lmao**
 
+![btflip_desktop](https://github.com/An-GG/carthing/assets/20458990/c0d726b4-7905-44a9-8a1c-64bd8f5380b7)
+
 ![btflip](https://github.com/An-GG/carthing/assets/20458990/9e27e8e0-3e07-4b78-8fd2-51c2872283b6)
 
 >>> **ok yeah** going for security or whatever was mega low IQ decision making, should've actually looked at implementation first. *after a device is paired it can just casually become a HID device* ***and still stay paired***
