@@ -68,12 +68,19 @@ we were avoiding implementing a HID device for security / privacy reasons but th
 
 <img width="507" alt="IMG_5200" src="https://github.com/An-GG/carthing/assets/20458990/16368639-92b1-4aca-ab87-2f64992806c9">
 
-it looks exactly the same to the user and ios will reconnect. user controls initial pairing invocation after which connection is secure
+it looks exactly the same to the user and ios will reconnect*. user controls initial pairing invocation after which connection is secure
+
+
 
 <img width="794" alt="Screenshot 2023-10-26 at 3 19 11 PM" src="https://github.com/An-GG/carthing/assets/20458990/a8b55937-84d0-421f-ac4b-8474bc6c95dc">
 
 
 #### bottom line: use whatever bt protocol its fine
+
+
+# asterisk *
+![IMG_5204](https://github.com/An-GG/carthing/assets/20458990/06b7efe7-0829-4496-ae21-9d1f26874ee6)
+
 
 ---
 
