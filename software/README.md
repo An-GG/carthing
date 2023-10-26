@@ -56,6 +56,10 @@ we were avoiding implementing a HID device for security / privacy reasons but th
 
 **basically any of these could be HID input and it's not really clear anyway, so**
 
+> edit: **holy shit it literally does actually look the same lmao**
+
+
+
 ---
 
 
@@ -217,5 +221,16 @@ https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-ma
 
 <img width="1436" alt="peak computer" src="https://github.com/An-GG/carthing/assets/20458990/4319681b-4a2f-4859-b459-42aac67c4964">
 
+- no clue if [this thing](https://a.co/d/fkkYqNX) has a gpio led or not blink sketch doesnt work
 
+for new project
+- get_idf
+- idf.py set-target esp32
+- **idf.py menuconfig** - seems like it just adjusts any C++ #defs 
+- idf.py -p /dev/cu.usbserial-0001 flash monitor
+<br><br>
+
+<img width="788" alt="Screenshot 2023-10-26 at 1 37 54 PM" src="https://github.com/An-GG/carthing/assets/20458990/02309bf2-cca5-423a-a3c6-690bbbf4d2f5">
+
+bro???
 
