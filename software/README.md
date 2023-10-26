@@ -202,5 +202,11 @@ https://github.com/An-GG/carthing/assets/20458990/ce36b7af-db1b-407d-98c6-88dba1
 
 that's it. that's the entire app.
 
+# - [✅] part B done
+
+---
+
+# part A objective
+## use rssi + tricks to achieve tesla passive carkey  ==without background app refresh==
 
 
