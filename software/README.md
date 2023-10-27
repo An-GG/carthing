@@ -118,6 +118,13 @@ https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/blueto
 
 <img width="679" alt="Screenshot 2023-10-22 at 9 52 02 AM" src="https://github.com/An-GG/carthing/assets/20458990/35741b3d-606e-46f3-9f34-5fd0fca6f16c">
 
+> **Addendum:**  note: the png above is quite trash for trying to figure out what the actual advertised service UUID is as seen by computers/phones. even though the "uuid" for a2dp_sink is **110b** (hex or literal characters?),  linux computer shows the full UUID: (0000**110b**-0000-1000-8000-00805f9b34fb)
+
+
+
+![IMG_5207](https://github.com/An-GG/carthing/assets/20458990/ea5589c9-c7ac-443a-8103-cb30630e3b2a)
+
+
 ---
 
 
