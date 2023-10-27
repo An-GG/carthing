@@ -127,7 +127,21 @@ https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/blueto
 
 > **Addendendum:** p sure you used bluethootctl above but this was also when you thought A2DP Sink was using BLE, and trying to copy the service UUIDs & values from AirPods Ultra to custom ble advertisement block to clone it,
 >
-> fundamentally retarded approach bruh this is literally bluetooth classic 
+> fundamentally retarded approach bruh this is literally bluetooth classic
+
+**ok next one __kinda__ important** *inhales*
+
+> **Addendendendum:** for some reason, even though the ESP shows up perfeclty fine as AirPods Ultra in ios settings, it is NOT DISCOVERABLE (or discovered device isn't obvious) via all of these bluetooth apps i tried,
+> - *and i wasn't able to get CoreBluetooth to list them either on both macOS and iOS*
+>
+> - i also tried using the '@abandonware/noble' npm package on mac (p nice JS bt api for nodejs ngl)
+> - it would make sense to me that the OS hides these devices from apps
+>
+> - doesnt seem like linux does this atm
+
+![IMG_18D021E96154-1](https://github.com/An-GG/carthing/assets/20458990/acadeb44-5a20-4992-bd02-7f739d912013)
+
+
 
 ---
 
@@ -247,7 +261,7 @@ that's it. that's the entire app.
 ## use rssi + tricks to achieve tesla passive carkey  ==without background app refresh==
 
 
-> Espressif ( Nvidia if iot devkits were GPUs ) provides full stack first party IDE which is really nice espc since there are already lots of variants of nodemcu boards
+> Espressif (Nvidia if IoT devkits were GPUs) provides a full stack first-party IDE, which is really nice, especially since there are already way too many variants of NodeMCU boards.
 ```
 https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#get-started-prerequisites
 ```
