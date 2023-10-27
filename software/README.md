@@ -125,6 +125,10 @@ https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/blueto
 ![IMG_5207](https://github.com/An-GG/carthing/assets/20458990/ea5589c9-c7ac-443a-8103-cb30630e3b2a)
 
 
+> **Addendendum:** p sure you used bluethootctl above but this was also when you thought A2DP Sink was using BLE, and trying to copy the service UUIDs & values from AirPods Ultra to custom ble advertisement block to clone it,
+>
+> fundamentally retarded approach bruh this is literally bluetooth classic 
+
 ---
 
 
