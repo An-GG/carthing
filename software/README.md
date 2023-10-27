@@ -281,3 +281,11 @@ for new project
 
 bro???
 
+
+
+--- 
+oh kinda random but you're gonna forget: 
+
+<img width="852" alt="Screenshot 2023-10-26 at 8 18 05 PM" src="https://github.com/An-GG/carthing/assets/20458990/c22f226e-6b43-4a3d-9730-373b5396b08f">
+
+the wireless camera button that came with telescope / what is that is that just a keyboard 
